@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 using VRC.UI.Elements;
 using VRC.DataModel.Core;
@@ -28,13 +29,11 @@ namespace Quantum.API.UI
 
         public static class Templates
         {
-            private const string _simpleButtonPath = "Canvas_QuickMenu(Clone)/Container/Window/QMParent/Menu_Dashboard/ScrollRect/Viewport/VerticalLayoutGroup/Buttons_QuickActions/Button_Emojis";
-            private const string _toggleButtonPath = "";
+            private const string _buttonPath = "Canvas_QuickMenu(Clone)/Container/Window/QMParent/Menu_Dashboard/ScrollRect/Viewport/VerticalLayoutGroup/Buttons_QuickActions/Button_Emojis";
             private const string _tabButtonPath = "";
             private const string _subMenuPath = "Canvas_QuickMenu(Clone)/Container/Window/QMParent/Menu_QM_Emojis";
 
-            public static GameObject simpleButton { get; private set; }
-            public static GameObject toggleButton { get; private set; }
+            public static GameObject button { get; private set; }
             public static GameObject tabButton { get; private set; }
             public static GameObject subMenu { get; private set; }
 
@@ -42,24 +41,29 @@ namespace Quantum.API.UI
             {
                 QMain.Instance.LoggerInstance.Msg(ConsoleColor.DarkCyan, "Loading UI templates...");
 
-                SetSimpleButton();
-                SetSubMenu();
+                GetButton();
+                GetSubMenu();
             }
 
-            private static void SetSimpleButton()
+            private static void GetButton()
             {
-                QMain.Instance.LoggerInstance.Msg("Getting SimpleButton...");
+                QMain.Instance.LoggerInstance.Msg("Getting Button...");
 
                 try
                 {
-                    simpleButton = userInterface.transform.Find(_simpleButtonPath).gameObject;
+                    button = userInterface.transform.Find(_buttonPath).gameObject;
 
-                    GameObject.DestroyImmediate(simpleButton.GetComponent<BindingComponent>());
+                    if (button.transform.Find("Icon") == null)
+                        button.transform.Find("Icon_On").GetComponent<Image>().sprite = null;
+                    else
+                        button.transform.Find("Icon").GetComponent<Image>().sprite = null;
+
+                    GameObject.DestroyImmediate(button.GetComponent<BindingComponent>());
                 }
-                catch (Exception ex) { QMain.Instance.LoggerInstance.Error("Couldn't set SimpleButton template."); }
+                catch (Exception ex) { QMain.Instance.LoggerInstance.Error("Couldn't set Button template."); }
             }
 
-            private static void SetSubMenu()
+            private static void GetSubMenu()
             {
                 QMain.Instance.LoggerInstance.Msg("Getting SubMenu...");
 

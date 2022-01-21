@@ -71,6 +71,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\UI\QuickMenu\ButtonBase.cs" />
     <Compile Include="API\UI\QuickMenu\SubMenu.cs" />
     <Compile Include="API\UI\UIManager.cs" />
     <Compile Include="API\UI\QuickMenu\SimpleButton.cs" />
