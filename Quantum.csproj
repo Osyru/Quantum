@@ -74,6 +74,7 @@
     <Compile Include="API\UI\QuickMenu\SubMenu.cs" />
     <Compile Include="API\UI\UIManager.cs" />
     <Compile Include="API\UI\QuickMenu\SimpleButton.cs" />
+    <Compile Include="API\Utilities\XrefUtils.cs" />
     <Compile Include="Quantum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
