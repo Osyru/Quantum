@@ -66,22 +66,29 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="VRC.UI.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\VRC.UI.Core.dll</HintPath>
+    </Reference>
     <Reference Include="VRC.UI.Elements">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\VRChat\MelonLoader\Managed\VRC.UI.Elements.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\UI\QuickMenu\ButtonBase.cs" />
+    <Compile Include="API\UI\QuickMenu\Prefabs.cs" />
     <Compile Include="API\UI\QuickMenu\SubMenu.cs" />
     <Compile Include="API\UI\UIManager.cs" />
     <Compile Include="API\UI\QuickMenu\SimpleButton.cs" />
-    <Compile Include="API\Utilities\XrefUtils.cs" />
+    <Compile Include="API\Helpers\XrefUtils.cs" />
+    <Compile Include="Client\QuantumClient.cs" />
     <Compile Include="Quantum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="API\UI\ActionMenu\" />
     <Folder Include="API\UI\BigMenu\" />
+    <Folder Include="API\UI\HUD\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

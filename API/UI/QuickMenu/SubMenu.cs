@@ -25,7 +25,7 @@ namespace Quantum.API.UI.QuickMenu
 
         public SubMenu(string pageName, string gameObjectName, bool useBackButton, UIPage rootPage)
         {
-            subMenu = GameObject.Instantiate(UIManager.Templates.subMenu, UIManager.qmParent.transform);
+            subMenu = GameObject.Instantiate(Prefabs.SubMenu, UIManager.QMParentGO.transform);
 
             subMenu.name = "Menu_" + gameObjectName;
 

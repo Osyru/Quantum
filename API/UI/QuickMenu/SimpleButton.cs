@@ -16,39 +16,28 @@ namespace Quantum.API.UI.QuickMenu
 {
     public class SimpleButton : ButtonBase
     {
-        /// <summary>
-        /// Create a SimpleButton on a given UIPage
-        /// </summary>
-        /// <param name="buttonName">The text on the button</param>
-        /// <param name="gameObjectName">The name of the GameObject</param>
-        /// <param name="tooltip">The tooltip displayed at the bottom of the QuickMenu</param>
-        /// <param name="icon">The icon of the button. Can be null to display no icon</param>
-        /// <param name="parent">The parent GameObject to attach the button to</param>
-        /// <param name="onClick">Action called when the button is pressed</param>
-        public SimpleButton(string buttonName, string gameObjectName, string tooltip, Sprite icon, Transform parent, Action onClick) : base(buttonName, gameObjectName, tooltip, icon, parent)
+        public SimpleButton(string pText, string pTooltip, Sprite pIcon, Transform pParent, Action pOnClick) : base(ButtonType.SimpleButton, pText, pParent)
         {
-            BindingExtensions.Method_Public_Static_ButtonBindingHelper_Button_Action_0(buttonComponent, onClick);
+            if (pIcon == null)
+            {
+                textH1.text = pText;
+                textH1.enableAutoSizing = true;
 
-            buttonGameObject.SetActive(true);
-        }
+                textH1.color = new Color(0.2980392f, 0.5568628f, 0.5843138f, 1f); // set the h1 text to color of h4 text
 
-        /// <summary>
-        /// Create a SimpleButton on a given UIPage
-        /// </summary>
-        /// <param name="buttonName">The text on the button</param>
-        /// <param name="gameObjectName">The name of the GameObject</param>
-        /// <param name="tooltip">The tooltip displayed at the bottom of the QuickMenu</param>
-        /// <param name="icon">The icon of the button. Can be null to display no icon</param>
-        /// <param name="parent">The parent GameObject to attach the button to</param>
-        /// <param name="onClick">Action called when the button is pressed</param>
-        /// <param name="bigMenuPageIndex">The page to show when the BigMenu opens/param>
-        public SimpleButton(string buttonName, string gameObjectName, string tooltip, Sprite icon, Transform parent, Action onClick, int bigMenuPageIndex) : base(buttonName, gameObjectName, tooltip, icon, parent)
-        {
-            buttonGameObject.transform.Find("Badge_MMJump").gameObject.SetActive(true);
+                textH1.gameObject.SetActive(true);
+                textH4.gameObject.SetActive(false);
+            }
+            else
+            {
+                textH4.text = pText;
+            }
 
-            BindingExtensions.Method_Public_Static_ButtonBindingHelper_Button_Action_0(buttonComponent, onClick);
+            simpleTooltip.field_Public_String_0 = pTooltip;
 
-            buttonGameObject.SetActive(true);
+            BindingExtensions.Method_Public_Static_ButtonBindingHelper_Button_Action_0(button, pOnClick);
+
+            gameObject.SetActive(true);
         }
     }
 }
